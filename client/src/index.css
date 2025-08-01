@@ -91,12 +91,51 @@
   .pulse-blue {
     animation: pulse-blue 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
+  
+  .glass-button {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .glass-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-button-primary {
+    background: rgba(0, 122, 255, 0.15);
+    border: 1px solid rgba(0, 122, 255, 0.3);
+  }
+  
+  .glass-button-primary:hover {
+    background: rgba(0, 122, 255, 0.25);
+    border-color: rgba(0, 122, 255, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 122, 255, 0.2);
+  }
 }
 
 @keyframes flip {
-  0% { transform: rotateX(0); }
-  50% { transform: rotateX(-90deg); }
-  100% { transform: rotateX(0); }
+  0% { 
+    transform: rotateX(0deg);
+    transform-origin: center bottom;
+  }
+  50% { 
+    transform: rotateX(-90deg);
+    transform-origin: center bottom;
+  }
+  100% { 
+    transform: rotateX(0deg);
+    transform-origin: center bottom;
+  }
 }
 
 @keyframes pulse-blue {

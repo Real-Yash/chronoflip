@@ -5,9 +5,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
-import FlipCard from "@/components/flip-card";
-import { usePomodoroTimer } from "@/hooks/use-pomodoro-timer";
-import { useSound } from "@/hooks/use-sound";
+import FlipCard from "../components/flip-card";
+import { usePomodoroTimer } from "../hooks/use-pomodoro-timer";
+import { useSound } from "../hooks/use-sound";
 
 type TimerMode = 'pomodoro' | 'break' | 'clock';
 
@@ -178,29 +178,32 @@ export default function FlipClock() {
       
       {/* Mode Selection */}
       <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="glass-effect rounded-xl p-4 border border-gray-700">
-          <div className="flex items-center space-x-4">
+        <div className="glass-effect rounded-xl p-3 border border-gray-700">
+          <div className="flex items-center space-x-3">
             <Button
-              variant={mode === 'pomodoro' ? 'default' : 'ghost'}
-              size="sm"
               onClick={() => handleModeChange('pomodoro')}
-              className={mode === 'pomodoro' ? 'bg-blue-600 hover:bg-blue-700' : 'text-gray-400 hover:text-white'}
+              className={mode === 'pomodoro' 
+                ? 'px-4 py-2 rounded-lg glass-button-primary border-0 text-white hover:text-white text-sm' 
+                : 'px-4 py-2 rounded-lg glass-button border-0 text-gray-400 hover:text-white text-sm'
+              }
             >
               Pomodoro
             </Button>
             <Button
-              variant={mode === 'break' ? 'default' : 'ghost'}
-              size="sm"
               onClick={() => handleModeChange('break')}
-              className={mode === 'break' ? 'bg-blue-600 hover:bg-blue-700' : 'text-gray-400 hover:text-white'}
+              className={mode === 'break' 
+                ? 'px-4 py-2 rounded-lg glass-button-primary border-0 text-white hover:text-white text-sm' 
+                : 'px-4 py-2 rounded-lg glass-button border-0 text-gray-400 hover:text-white text-sm'
+              }
             >
               Break
             </Button>
             <Button
-              variant={mode === 'clock' ? 'default' : 'ghost'}
-              size="sm"
               onClick={() => handleModeChange('clock')}
-              className={mode === 'clock' ? 'bg-blue-600 hover:bg-blue-700' : 'text-gray-400 hover:text-white'}
+              className={mode === 'clock' 
+                ? 'px-4 py-2 rounded-lg glass-button-primary border-0 text-white hover:text-white text-sm' 
+                : 'px-4 py-2 rounded-lg glass-button border-0 text-gray-400 hover:text-white text-sm'
+              }
             >
               Clock
             </Button>
@@ -251,26 +254,22 @@ export default function FlipClock() {
 
       {/* Control Panel */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="glass-effect rounded-2xl p-6 border border-gray-700">
-          <div className="flex items-center space-x-6">
+        <div className="glass-effect rounded-2xl p-4 border border-gray-700">
+          <div className="flex items-center space-x-4">
             {/* Play/Pause Button */}
             <Button
               onClick={handlePlayPause}
               disabled={mode === 'clock'}
-              size="lg"
-              className="rounded-full w-16 h-16 control-shadow hover:scale-105 transition-all"
-              style={{ backgroundColor: 'var(--system-blue)' }}
+              className="rounded-full w-12 h-12 glass-button-primary border-0 text-white hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isRunning ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+              {isRunning ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
             </Button>
             
             {/* Reset Button */}
             <Button
               onClick={handleReset}
               disabled={mode === 'clock'}
-              variant="secondary"
-              size="sm"
-              className="rounded-full w-12 h-12 control-shadow hover:scale-105 transition-all bg-gray-700 hover:bg-gray-600"
+              className="rounded-full w-10 h-10 glass-button border-0 text-gray-300 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <RotateCcw className="w-4 h-4" />
             </Button>
@@ -278,9 +277,7 @@ export default function FlipClock() {
             {/* Settings Button */}
             <Button
               onClick={() => setShowSettings(true)}
-              variant="secondary"
-              size="sm"
-              className="rounded-full w-12 h-12 control-shadow hover:scale-105 transition-all bg-gray-700 hover:bg-gray-600"
+              className="rounded-full w-10 h-10 glass-button border-0 text-gray-300 hover:text-white"
             >
               <Settings className="w-4 h-4" />
             </Button>
@@ -288,9 +285,7 @@ export default function FlipClock() {
             {/* Fullscreen Button */}
             <Button
               onClick={handleFullscreen}
-              variant="secondary"
-              size="sm"
-              className="rounded-full w-12 h-12 control-shadow hover:scale-105 transition-all bg-gray-700 hover:bg-gray-600"
+              className="rounded-full w-10 h-10 glass-button border-0 text-gray-300 hover:text-white"
             >
               <Maximize className="w-4 h-4" />
             </Button>
@@ -368,8 +363,7 @@ export default function FlipClock() {
             </p>
             <Button
               onClick={() => setShowNotification(false)}
-              className="px-6 py-3"
-              style={{ backgroundColor: 'var(--system-blue)' }}
+              className="px-6 py-3 rounded-lg glass-button-primary border-0 text-white hover:text-white"
             >
               Continue
             </Button>
