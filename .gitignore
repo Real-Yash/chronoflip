@@ -1,6 +1,66 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+dist-electron/
+build/
+server/public/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
 .DS_Store
-server/public
-vite.config.ts.*
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Electron builder outputs
+dist-electron/
+release/
+
+# Cache files
+.cache/
+*.cache
+
+# Temporary files
+tmp/
+temp/
 *.tar.gz
+
+# Development files
+.replit
+.replit.nix
+replit.md
+vite.config.ts.*
+
+# Electron files (not for GitHub)
+electron/
+scripts/build-frontend.js
+
+# Database files (if any)
+*.db
+*.sqlite
+*.sqlite3
