@@ -268,12 +268,12 @@ export default function FlipClock() {
       {/* Main Clock Display - Always Visible */}
       <div className="flex flex-col items-center space-y-8 z-10">
         {/* Time Display */}
-        <div className="flex items-center justify-center space-x-4 md:space-x-8">
+        <div className="flex items-center justify-center space-x-3 md:space-x-6">
           {/* Hours */}
           <FlipCard value={displayTime.hours} size="large" />
           
           {/* Separator */}
-          <div className={`text-6xl md:text-8xl lg:text-9xl font-mono font-light text-white/90 ${
+          <div className={`text-5xl md:text-7xl lg:text-8xl font-mono font-light text-white/90 ${
             isRunning && mode !== 'clock' ? 'animate-pulse-slow' : ''
           }`}>:</div>
           
