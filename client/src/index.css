@@ -66,19 +66,43 @@
 }
 
 @layer utilities {
-  .flip-card {
+  /* Modern Glass Effect */
+  .modern-glass {
+    backdrop-filter: blur(20px);
+    background: rgba(41, 41, 46, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Flip Card Animations */
+  .flip-container {
     perspective: 1000px;
+  }
+  
+  .flip-digit {
     transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
   }
   
   .flip-animation {
-    animation: flip 0.6s ease-in-out;
+    animation: flipDown 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
   }
   
+  /* Smooth Pulse Animation for Colons */
+  .animate-pulse-slow {
+    animation: pulseSlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Fade In Animation for Notifications */
+  .animate-fade-in {
+    animation: fadeIn 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+  }
+  
+  /* Time Shadow Effect */
   .time-shadow {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
   }
   
+  /* Legacy Glass Effects (keeping for compatibility) */
   .glass-effect {
     backdrop-filter: blur(10px);
     background: rgba(44, 44, 46, 0.8);
@@ -123,6 +147,47 @@
   }
 }
 
+/* Keyframe Animations */
+@keyframes flipDown {
+  0% { 
+    transform: rotateX(0deg);
+  }
+  50% { 
+    transform: rotateX(-90deg);
+    opacity: 0.8;
+  }
+  100% { 
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0.3; 
+  }
+}
+
+@keyframes fadeIn {
+  0% { 
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulse-blue {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Legacy flip animation (keeping for compatibility) */
 @keyframes flip {
   0% { 
     transform: rotateX(0deg);
@@ -136,9 +201,4 @@
     transform: rotateX(0deg);
     transform-origin: center bottom;
   }
-}
-
-@keyframes pulse-blue {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
 }
